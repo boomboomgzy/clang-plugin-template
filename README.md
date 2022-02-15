@@ -1,6 +1,6 @@
 ### Requirements
 
-- LLVM 12+
+- LLVM 12+ (https://github.com/llvm/llvm-project)
 
 ### Building
 
