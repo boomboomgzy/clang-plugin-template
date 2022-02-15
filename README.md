@@ -21,5 +21,4 @@ $ clang -fplugin=</path/to/build>/lib/libprintfunc.so \
 ### Additional Remarks
 
 - Change `printfunc` in `lib/CMakeLists.txt` to your plugin name.
-  `libprintfunc.so` will change to `lib<your-plugin-name>.so`. Set the library
-  name accordingly when running.
+  `libprintfunc.so` will be renamed to `lib<your-plugin-name>.so`.
