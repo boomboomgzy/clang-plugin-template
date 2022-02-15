@@ -1,9 +1,9 @@
-add_library(astexp MODULE
-  AstExporter.cpp
+add_library(printfunc MODULE
+  PrintFunction.cpp
 )
 
-target_include_directories(astexp
+target_include_directories(printfunc
   INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-install(TARGETS astexp DESTINATION lib)
+install(TARGETS printfunc DESTINATION lib)

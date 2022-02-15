@@ -9,6 +9,9 @@
 
 namespace astexp {
 
+  // Sample AST plugin courtesy of nsumner.
+  // (https://github.com/nsumner/clang-plugins-demo)
+
   class PrintFunctionsAction : public clang::PluginASTAction {
   public:
     PrintFunctionsAction()
