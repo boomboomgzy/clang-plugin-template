@@ -14,7 +14,8 @@ $ make
 ### Running
 
 ```
-$ clang -fplugin=</path/to/build>/lib/libprintfunc.so -c </path/to/source> 
+$ clang -fplugin=</path/to/build>/lib/libprintfunc.so \
+    -c </path/to/source> 
 ```
 
 ### Additional Remarks
