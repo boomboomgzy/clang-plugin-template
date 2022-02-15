@@ -7,7 +7,7 @@
 #include "clang/Tooling/Tooling.h"
 #include "clang/Frontend/FrontendPluginRegistry.h"
 
-namespace astexp {
+namespace printfunc {
 
   // Sample AST plugin courtesy of nsumner.
   // (https://github.com/nsumner/clang-plugins-demo)
