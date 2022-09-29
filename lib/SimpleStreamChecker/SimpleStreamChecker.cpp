@@ -278,8 +278,8 @@ SimpleStreamChecker::checkPointerEscape(ProgramStateRef State,
  * You can double check that it is working/found by listing the available
  * checkers with the -analyzer-checker-help option. */
 
-constexpr const char * CHECKER_PLUGIN_NAME = "demo.StreamChecker";
-constexpr const char * CHECKER_PLUGIN_DOCS_URI = "demo.StreamChecker.nonexistent";
+constexpr const char * CHECKER_PLUGIN_NAME = "demo.SimpleStreamChecker";
+constexpr const char * CHECKER_PLUGIN_DOCS_URI = "demo.SimpleStreamChecker.nonexistent";
 
 extern "C" __attribute__ ((visibility ("default")))
 const char clang_analyzerAPIVersionString[] =

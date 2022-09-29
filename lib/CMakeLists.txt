@@ -1,2 +1,2 @@
 add_subdirectory(PrintFunction)
-add_subdirectory(StreamChecker)
+add_subdirectory(SimpleStreamChecker)
