@@ -1,8 +1,6 @@
-### Requirements
+## Building
 
-- LLVM 15+ (https://github.com/llvm/llvm-project)
-
-### (Prerequisite) Building LLVM
+### (Prerequisite) LLVM
 
 0. Instal prerequisites.
 
@@ -61,7 +59,7 @@ You may want to add those commands at the end of your `.bashrc` file to let your
 terminal automatically recognize them whenever it starts up.  The default
 `.bashrc` file is at your home directory. (e.g., `/home/<your_id>/.bashrc`)
 
-### Building Examples (Checker & AST Visitor)
+### Plugins (Checker & AST Visitor)
 
 ```
 $ cd <this/repo/dir>
@@ -71,16 +69,16 @@ $ cmake -DLLVM_DIR=$LLVM_BUILD_DIR/lib/cmake/llvm/ ..
 $ make
 ```
 
-### Running
+## Running
 
-## AST Visitor (PrintFunction)
+### AST Visitor (PrintFunction)
 
 ```
 $ clang -fplugin=</path/to/build>/lib/libprintfunc.so \
     -c </path/to/source> 
 ```
 
-## Checker (StreamChecker)
+### Checker (StreamChecker)
 
 ```
 $ clang -fsyntax-only -fplugin=lib/libSimpleStreamChecker.so \
