@@ -74,14 +74,14 @@ $ make
 ### AST Visitor (PrintFunction)
 
 ```
-$ clang -fplugin=</path/to/build>/lib/libprintfunc.so \
-    -c </path/to/source> 
+$ clang -fplugin=$LLVM_BUILD_DIR/lib/libprintfunc.so \
+    -c <this/repo/dir>/test/functions.c
 ```
 
 ### Checker (StreamChecker)
 
 ```
-$ clang -fsyntax-only -fplugin=lib/libSimpleStreamChecker.so \
+$ clang -fsyntax-only -fplugin=$LLVM_BUILD_DIR/lib/libSimpleStreamChecker.so \
     -Xclang -analyze -Xclang -analyzer-checker=demo.SimpleStreamChecker \
     <this/repo/dir>/test/files.c
 ```
