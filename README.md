@@ -57,10 +57,9 @@ $ export PATH=$PATH:$LLVM_INSTALL_DIR/bin
 ```
 
 Please replace `<...>` to a proper absolute path to the directory `my-project`.
-You may want to add the last three commands (`export`s) at the end of your
-`.bashrc` file to let your terminal automatically recognize them whenever it
-starts up.  The default `.bashrc` file is at your home directory. (e.g.,
-`/home/<your_id>/.bashrc`)
+You may want to add those commands at the end of your `.bashrc` file to let your
+terminal automatically recognize them whenever it starts up.  The default
+`.bashrc` file is at your home directory. (e.g., `/home/<your_id>/.bashrc`)
 
 ### Building Examples (Checker & AST Visitor)
 
