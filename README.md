@@ -37,7 +37,8 @@ $ cmake -DLLVM_TARGETS_TO_BUILD=X86 -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=$(pwd)/../install \
     -DLLVM_ENABLE_PROJECTS="clang;compiler-rt" \
     -G "Unix Makefiles" -DLLVM_ENABLE_ASSERTIONS=ON \
-    -DCMAKE_CXX_FLAGS=${CMAKE_CLANG_FLAGS} ../llvm
+    -DCMAKE_CXX_FLAGS=${CMAKE_CLANG_FLAGS} \
+    -DBUILD_SHARED_LIBS=ON ../llvm
 ```
 
 5. Build and install LLVM. (c.f., control # of cpus to use with "-j" option).
