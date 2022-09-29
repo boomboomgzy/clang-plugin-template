@@ -16,12 +16,11 @@
 
 #include "clang/StaticAnalyzer/Core/BugReporter/BugType.h"
 #include "clang/StaticAnalyzer/Core/Checker.h"
+#include "clang/StaticAnalyzer/Core/PathSensitive/CallDescription.h"
 #include "clang/StaticAnalyzer/Core/PathSensitive/CallEvent.h"
 #include "clang/StaticAnalyzer/Core/PathSensitive/CheckerContext.h"
 #include "clang/StaticAnalyzer/Frontend/CheckerRegistry.h"
 #include <utility>
-
-#include "SimpleStreamChecker.h"
 
 using namespace clang;
 using namespace ento;
@@ -121,7 +120,7 @@ void SimpleStreamChecker::checkPostCall(const CallEvent &Call,
   if (!Call.isGlobalCFunction())
     return;
 
-  if (!Call.isCalled(OpenFn))
+  if (!OpenFn.matches(Call))
     return;
 
   // Get the symbolic value corresponding to the file handle.
@@ -140,7 +139,7 @@ void SimpleStreamChecker::checkPreCall(const CallEvent &Call,
   if (!Call.isGlobalCFunction())
     return;
 
-  if (!Call.isCalled(CloseFn))
+  if (!CloseFn.matches(Call))
     return;
 
   // Get the symbolic value corresponding to the file handle.
@@ -268,16 +267,19 @@ SimpleStreamChecker::checkPointerEscape(ProgramStateRef State,
   return State;
 }
 
-// See clang/StaticAnalyzer/Core/CheckerRegistry.h for details on  creating
-// plugins for the clang static analyzer. The requirements are that each
-// plugin include the version string and registry function below. The checker
-// should then be usable with:
-//
-//   clang -cc1 -load </path/to/plugin> -analyze \
-//     -analyzer-checker=<prefix.checkername>
-//
-// You can double check that it is working/found by listing the available
-// checkers with the -analyzer-checker-help option.
+/* See clang/StaticAnalyzer/Core/CheckerRegistry.h for details on  creating
+ * plugins for the clang static analyzer. The requirements are that each
+ * plugin include the version string and registry function below. The checker
+ * should then be usable with:
+ *
+ *   clang -cc1 -load </path/to/plugin> -analyze \
+ *     -analyzer-checker=<prefix.checkername>
+ *
+ * You can double check that it is working/found by listing the available
+ * checkers with the -analyzer-checker-help option. */
+
+constexpr const char * CHECKER_PLUGIN_NAME = "demo.StreamChecker";
+constexpr const char * CHECKER_PLUGIN_DOCS_URI = "demo.StreamChecker.nonexistent";
 
 extern "C" __attribute__ ((visibility ("default")))
 const char clang_analyzerAPIVersionString[] =
@@ -291,4 +293,3 @@ clang_registerCheckers(CheckerRegistry &registry) {
       "Invokes the SimplesStreamChecker of the LLVM demo",
       CHECKER_PLUGIN_DOCS_URI);
 }
-

@@ -1,10 +1,10 @@
-project(clang-ast-plugin-template)
+project(clang-plugin-template)
 cmake_minimum_required(VERSION 3.12)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/")
 list(APPEND CMAKE_MODULE_PATH "${LLVM_DIR}")
 
-set(PACKAGE_NAME clang-ast-plugin-template)
+set(PACKAGE_NAME clang-plugin-template)
 set(PACKAGE_VERSION 0.2)
 set(PACKAGE_STRING "${PACKAGE_NAME} ${PACKAGE_VERSION}")
 
