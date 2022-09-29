@@ -51,12 +51,12 @@ $ make install -j4
 6. Set environment variables.
 
 ```
-$ cd .. # now we're at "my-project/llvm-project"
-$ export LLVM_BUILD_DIR=$(pwd)/build
-$ export LLVM_INSTALL_DIR=$(pwd)/install
+$ export LLVM_BUILD_DIR=<...>/my-project/llvm-project/build
+$ export LLVM_INSTALL_DIR=<...>/my-project/llvm-project/install
 $ export PATH=$PATH:$LLVM_INSTALL_DIR/bin
 ```
 
+Please replace `<...>` to a proper absolute path to the directory `my-project`.
 You may want to add the last three commands (`export`s) at the end of your
 `.bashrc` file to let your terminal automatically recognize them whenever it
 starts up.  The default `.bashrc` file is at your home directory. (e.g.,
