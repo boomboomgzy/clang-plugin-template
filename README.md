@@ -74,7 +74,7 @@ $ cmake -DLLVM_DIR=$LLVM_BUILD_DIR/lib/cmake/llvm/ ..  && make
 clang -fplugin=<this/repo/dir>/build/lib/libPrintFunc.so \
     -c <this/repo/dir>/test/functions.c
 ```
-### my_verison: clang -fplugin=/home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/build/lib/libPrintFunction.so -c /home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/test/functions.c
+### example: clang -fplugin=/home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/build/lib/libPrintFunction.so -c /home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/test/functions.c
 
 ### AST Matcher (explicit cast)
 ```
@@ -96,7 +96,7 @@ export MY_INCLUDES="-I/home/gzy/gzy_work_second/cpp/llvm/LLVM/build/lib/clang/15
 ```
     <this/repo/dir>/build/bin/cast-match <this/repo/dir>/test/is_cast.c  -- ${MY_INCLUDES}
 ```
-### my_version:/home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/build/bin/cast-match /home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/test/is_cast.c -- ${MY_INCLUDES}
+### example: /home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/build/bin/cast-match /home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/test/is_cast.c -- ${MY_INCLUDES}
 
 ### Checker (MainCallChecker)
 
@@ -105,6 +105,6 @@ clang -fsyntax-only -fplugin=<this/repo/dir>/build/lib/libMainCallChecker.so \
     -Xclang -analyze -Xclang -analyzer-checker=demo.MainCallChecker \
     <this/repo/dir>/test/maincall.c
 ```
-### gzy_version:  clang -fsyntax-only -fplugin=/home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/build/lib/libMainCallChecker.so -Xclang -analyze -Xclang -analyzer-checker=demo.MainCallChecker /home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/test/maincall.c
+### example:  clang -fsyntax-only -fplugin=/home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/build/lib/libMainCallChecker.so -Xclang -analyze -Xclang -analyzer-checker=demo.MainCallChecker /home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/test/maincall.c
 
 
