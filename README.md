@@ -30,24 +30,13 @@ $ mkdir build
 $ cd build
 ```
 
-4. Configure with CMake (c.f., this will generate Makefile here).
+4. build llvm (c.f., this will generate Makefile here).
 
-```
-$ cmake -DLLVM_TARGETS_TO_BUILD=X86 -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_INSTALL_PREFIX=$(pwd)/../install \
-    -DLLVM_ENABLE_PROJECTS="clang;compiler-rt" \
-    -G "Unix Makefiles" -DLLVM_ENABLE_ASSERTIONS=ON \
-    -DCMAKE_CXX_FLAGS=${CMAKE_CLANG_FLAGS} \
-    -DBUILD_SHARED_LIBS=ON ../llvm
-```
+llvm build目录下:
+1、cmake -DLLVM_TARGETS_TO_BUILD=X86 -DCMAKE_BUILD_TYPE=Release     -DCMAKE_INSTALL_PREFIX=$(pwd)/../install     -DLLVM_ENABLE_PROJECTS="clang"     -G "Unix Makefiles"(or -G Ninja)  -DLLVM_ENABLE_ASSERTIONS=ON     -DCMAKE_CXX_FLAGS=${CMAKE_CLANG_FLAGS}     -DBUILD_SHARED_LIBS=ON  -DCLANG_ENABLE_STATIC_ANALYZER=ON -DLLVM_ENABLE_PLUGINS=ON ../llvm
+2、make install -j8  (8是线程数) 或  ninja clang -j8
 
-5. Build and install LLVM. (c.f., control # of cpus to use with "-j" option).
-
-```
-$ make install -j4
-```
-
-6. Set environment variables.
+5. Set environment variables.
 
 ```
 $ export LLVM_BUILD_DIR=<...>/my-project/llvm-project/build
@@ -66,8 +55,7 @@ terminal automatically recognize them whenever it starts up.  The default
 $ cd <this/repo/dir>
 $ mkdir build
 $ cd build
-$ cmake -DLLVM_DIR=$LLVM_BUILD_DIR/lib/cmake/llvm/ ..
-$ make
+$ cmake -DLLVM_DIR=$LLVM_BUILD_DIR/lib/cmake/llvm/ ..  && make
 ```
 
 ## Running
@@ -75,14 +63,24 @@ $ make
 ### AST Visitor (PrintFunction)
 
 ```
-$ clang -fplugin=<this/repo/dir>/lib/libprintfunc.so \
+clang -fplugin=<this/repo/dir>/build/lib/libPrintFunc.so \
     -c <this/repo/dir>/test/functions.c
 ```
+### gzy_verison: clang -fplugin=/home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/build/lib/libPrintFunction.so -c /home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/test/functions.c
+
+### AST Matcher (explicit cast)
+
+### gzy_version:matcher.exe   testfile  -- ${MY_INCLUDES}
 
 ### Checker (StreamChecker)
 
 ```
-$ clang -fsyntax-only -fplugin=<this/repo/dir>/lib/libSimpleStreamChecker.so \
+clang -fsyntax-only -fplugin=<this/repo/dir>/build/lib/libSimpleStreamChecker.so \
     -Xclang -analyze -Xclang -analyzer-checker=demo.SimpleStreamChecker \
     <this/repo/dir>/test/files.c
 ```
+### gzy_version 
+### simplestream: clang -fsyntax-only -fplugin=/home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/build/lib/libSimpleStreamChecker.so -Xclang -analyze -Xclang -analyzer-checker=demo.SimpleStreamChecker /home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/test/files.c
+###  maincall: clang -fsyntax-only -fplugin=/home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/build/lib/libMainCallChecker.so -Xclang -analyze -Xclang -analyzer-checker=demo.MainCallChecker /home/gzy/gzy_work/cpp/clang_plugins/clang-plugin-template/test/maincall.c
+
+

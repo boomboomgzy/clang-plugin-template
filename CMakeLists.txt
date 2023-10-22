@@ -4,16 +4,18 @@ cmake_minimum_required(VERSION 3.12)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/")
 list(APPEND CMAKE_MODULE_PATH "${LLVM_DIR}")
 
+#setting project name and version (can be modifiy)
 set(PACKAGE_NAME clang-plugin-template)
 set(PACKAGE_VERSION 0.2)
 set(PACKAGE_STRING "${PACKAGE_NAME} ${PACKAGE_VERSION}")
 
+#generate compile commands file (compile_commands.json)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_compile_options(
   "$<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:-fno-rtti;-Wall>"
   "$<$<AND:$<CXX_COMPILER_ID:GNU>,$<CONFIG:DEBUG>>:-fno-omit-frame-pointer>"
 )
-
+#file save dir
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
@@ -51,4 +53,5 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 link_directories(${LIBRARY_OUTPUT_PATH})
 set(CMAKE_TEMP_LIBRARY_PATH "${PROJECT_BINARY_DIR}/lib")
 
+#enter subdir to run its cmakefile
 add_subdirectory(lib)

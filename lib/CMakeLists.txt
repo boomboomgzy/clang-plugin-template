@@ -1,2 +1,4 @@
 add_subdirectory(PrintFunction)
 add_subdirectory(SimpleStreamChecker)
+add_subdirectory(CastMatcher)
+add_subdirectory(MainCallChecker)
