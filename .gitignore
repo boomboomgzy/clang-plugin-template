@@ -1,13 +1,1 @@
-*
-!src
-!lib
-!lib/*
-!libsrc_*
-!include
-!*.c
-!*.cpp
-!*.cxx
-!*.cc
-!*.h
-!.gitignore
-!CMakeLists.txt
+build
