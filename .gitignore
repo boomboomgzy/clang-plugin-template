@@ -1,5 +1,7 @@
 *
 !src
+!lib
+!lib/*
 !libsrc_*
 !include
 !*.c
@@ -9,4 +11,3 @@
 !*.h
 !.gitignore
 !CMakeLists.txt
-!lib
